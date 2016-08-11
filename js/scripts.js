@@ -18,18 +18,21 @@ var domCreator = {
 		document.body.appendChild(cForm);
 	},
 	//метод - создаём инпут
-	inputCreate: function() {
-
+	inputCreate: function(idForCheck) {
+		//выводим несколько раз однотипные инпуты, но с разными id
 		for( var i = 0; i < arrInput.length; i++) {
-			var cLabel = document.createElement('label');
-			cLabel.innerHTML = '<span>' + arrInput[i] + '</span>';
-			cLabel.setAttribute('id','checkLabel');
+			var cParagraph = document.createElement('p');
 			var cInput = document.createElement('input');
+			cInput.setAttribute('id', idForCheck + i);
 			cInput.setAttribute('type','checkbox');
 			cInput.setAttribute('name','test-check');
+			var cLabel = document.createElement('label');
+			cLabel.innerHTML = '<span></span>' + arrInput[i];
+			cLabel.setAttribute('for', idForCheck +i);
 			//вставляем инпут  на страницу
-			testForm.appendChild(cLabel);
-			cLabel.insertBefore(cInput, cLabel.firstChild);
+			testForm.appendChild(cParagraph);
+			cParagraph.appendChild(cInput);
+			cParagraph.appendChild(cLabel);
 		}
 	},
 	buttonCreate: function(btnClass,btnValue) {
@@ -51,13 +54,13 @@ domCreator.textCreate('h3','main-title','Тест по программиров�
 domCreator.textCreate('p','list-title','1. Вопрос №1');
 //массив с текстом для инпутов
 var arrInput = ['Вариант ответа №1','Вариант ответа №2','Вариант ответа №3'];
-//вызываем метод для создания input
-domCreator.inputCreate(arrInput);
-//повторяем вызовы, только с другими параметрами
+//вызываем метод для создания первых input
+domCreator.inputCreate('firstListInput',arrInput);
+//повторяем вызовы, только с другими параметрами, чтобы поменять id для input
 domCreator.textCreate('p','list-title','2. Вопрос №2');
-domCreator.inputCreate(arrInput);
+domCreator.inputCreate('secondListInput',arrInput);
 //повторяем ещё разок
 domCreator.textCreate('p','list-title','2. Вопрос №2');
-domCreator.inputCreate(arrInput);
+domCreator.inputCreate('thirdListInput',arrInput);
 //вызываем метод создания кнопки
 domCreator.buttonCreate('btnInput','Проверить мои результаты');

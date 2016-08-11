@@ -11,11 +11,15 @@
 }
 .list-title {
 	font-size: 18px;
+	margin: 15px 0;
+}
+p {
+	margin: 12px 0;
 }
 label {
-	display: block;
 	margin: 5px;
 	margin-left: 15px;
+	cursor: pointer;
 }
 .btnInput {
 	width: 300px;
@@ -26,6 +30,26 @@ label {
 	border: 3px solid #000;
 	cursor: pointer;
 	font-size: 18px;
+	transition: all 0.5s ease;
+}
+.btnInput:hover {
+	background-color: #ebf3fa;
+}
+/*checkbox styly*/
+input[type="checkbox"] {
+    display:none;
+}
+input[type="checkbox"] + label span {
+    display:inline-block;
+    width:19px;
+    height:19px;
+    margin:-1px 4px 0 0;
+    vertical-align:middle;
+    background:url(../img/check.png) left top no-repeat;
+    cursor:pointer;
+}
+input[type="checkbox"]:checked + label span {
+    background:url(../img/check.png) -21px top no-repeat;
 }
 @media only screen and (max-width: 450px) {
 	.forma {
