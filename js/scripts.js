@@ -10,8 +10,9 @@ var domCreator = {
 		testForm.appendChild(cTitle);
 	},
 	//метод - создаём форму
-	formCreate: function() {
+	formCreate: function(formClass) {
 		var cForm = document.createElement('form');
+		cForm.classList = formClass;
 		cForm.setAttribute('id','testForm');
 		cForm.setAttribute('action','#');
 		document.body.appendChild(cForm);
@@ -41,7 +42,7 @@ var domCreator = {
 };
 
 //вызываем метод создания формы
-domCreator.formCreate();
+domCreator.formCreate('forma');
 //вызываем метод для создания главного заголовка с параметрами
 //имя тега, имя классв, текст внутри тега
 domCreator.textCreate('h3','main-title','Тест по программированию');
@@ -59,4 +60,4 @@ domCreator.inputCreate(arrInput);
 domCreator.textCreate('p','list-title','2. Вопрос №2');
 domCreator.inputCreate(arrInput);
 //вызываем метод создания кнопки
-domCreator.buttonCreate('btnInput','Hello');
+domCreator.buttonCreate('btnInput','Проверить мои результаты');
