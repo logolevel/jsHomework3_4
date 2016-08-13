@@ -19,20 +19,23 @@ var domCreator = {
 	},
 	//метод - создаём инпут
 	inputCreate: function(idForCheck) {
+		//т.к. ul нам нужен один раз, выводим его вне цикла
+		var cList = document.createElement('ul');
+		testForm.appendChild(cList);
 		//выводим несколько раз однотипные инпуты, но с разными id
 		for( var i = 0; i < arrInput.length; i++) {
-			var cParagraph = document.createElement('p');
+			var cItem = document.createElement('li');
 			var cInput = document.createElement('input');
 			cInput.setAttribute('id', idForCheck + i);
 			cInput.setAttribute('type','checkbox');
 			cInput.setAttribute('name','test-check');
 			var cLabel = document.createElement('label');
-			cLabel.innerHTML = '<span></span>' + arrInput[i];
+			cLabel.innerHTML = arrInput[i];
 			cLabel.setAttribute('for', idForCheck +i);
 			//вставляем инпут  на страницу
-			testForm.appendChild(cParagraph);
-			cParagraph.appendChild(cInput);
-			cParagraph.appendChild(cLabel);
+			cList.appendChild(cItem);
+			cItem.appendChild(cInput);
+			cItem.appendChild(cLabel);
 		}
 	},
 	buttonCreate: function(btnClass,btnValue) {
